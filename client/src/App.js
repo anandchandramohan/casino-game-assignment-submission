@@ -9,7 +9,7 @@ import "./css/style.css"
 
 import Page from "./components/pages/page"
 
-const socket = io()
+const socket = io("http://localhost:1111")
 
 function App(){
   	let my_console = function(){

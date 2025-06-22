@@ -12,12 +12,12 @@ module.exports = Object.freeze({
 
     DATABASE: [
         {
-            host: 'db4free.net', 
-            user: 'admin', 
-            password: 'Qazwsxedc123rfv123!',
-            database: 'bunnybetdatabase',
+            host: '127.0.0.1',
+            user: 'root', 
+            password: 'root',
+            database: 'casino_game',
             sql: "SELECT * FROM casino_users",
-            // multipleStatements: true 
+            multipleStatements: true 
         },
     ],
 })

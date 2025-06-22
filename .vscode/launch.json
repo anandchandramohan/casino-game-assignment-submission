@@ -1,0 +1,29 @@
+{
+  "version": "0.2.0",
+  "compounds": [
+    {
+      "name": "Debug Client and Server",
+      "configurations": ["Debug React Client", "Debug Node Server"]
+    }
+  ],
+  "configurations": [
+    {
+      "name": "Debug Node Server",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "server:dev"],
+      "cwd": "${workspaceFolder}/server",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "name": "Debug React Client",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:8088",
+      "webRoot": "${workspaceFolder}/client/src",
+      "preLaunchTask": "npm: start-react"
+    }
+  ]
+}

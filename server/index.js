@@ -1,9 +1,19 @@
 const express = require("express")
 const app = express()
+const cors = require('cors');
+app.use(cors({
+  origin: "http://localhost:8088",
+  credentials: true
+}));
 const bodyParser = require('body-parser')
-
 var http = require('http').createServer(app)
-var io = require('socket.io')(http)
+const io = require('socket.io')(http, {
+  cors: {
+    origin: "http://localhost:8088",
+    methods: ["GET", "POST"],
+    credentials: true
+  }
+});
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false })) 
@@ -163,19 +173,19 @@ io.on('connection', function(socket) {
         //       ip_address: res.data.ip? res.data.ip : "",
         //     }
         //   }
-        //   let timestamp = new Date().getTime() + ""   
-        //   let pass = JSON.stringify(encrypt(data.pass))
+           let timestamp = new Date().getTime() + ""   
+           let pass = JSON.stringify(encrypt(data.pass))
 
         //   //insert new user in users and login tables
-        //   database_config.sql = "INSERT INTO casino_user (uuid, user, email, pass, account_type, money, signup) VALUES (?, ?, ?, ?, ?, ?, ?)"
-				// 	let payload = [uuid, data.user, data.email, pass, account_type, user_money, timestamp] 
-        //   database_config.name = "db03"
-        //   database(database_config, payload).then(function(result){
-				// 		let insertId = result.insertId
-        //     database_config.sql = 'INSERT INTO login_user (user_id, login_date, device, ip_address, city, country) VALUES (' + insertId + ', "' + timestamp + '", ' + device + ', "' + extra_data.ip_address + '", "' + extra_data.city + '", "' + extra_data.country + '");'
-        //     database_config.name = "db04"
-        //     database(database_config).then(function(result){})
-        //   })
+           database_config.sql = "INSERT INTO casino_user (uuid, user, email, pass, account_type, money, signup) VALUES (?, ?, ?, ?, ?, ?, ?)"
+				 	let payload = [uuid, data.user, data.email, pass, account_type, user_money, timestamp] 
+           database_config.name = "db03"
+           database(database_config, payload).then(function(result){
+				 		let insertId = result.insertId
+             database_config.sql = 'INSERT INTO login_user (user_id, login_date, device, ip_address, city, country) VALUES (' + insertId + ', "' + timestamp + '", ' + device + ', "' + extra_data.ip_address + '", "' + extra_data.city + '", "' + extra_data.country + '");'
+             database_config.name = "db04"
+             database(database_config).then(function(result){})
+           })
         // })
       } else {        
         let array = result.filter(function(x){ //check if there already is an email with same username
@@ -581,5 +591,4 @@ io.on('connection', function(socket) {
     console.log('Got disconnect!')
   })
 })
-
 http.listen(PORT, () => {console.log(`Server listening on ${PORT}`)})
