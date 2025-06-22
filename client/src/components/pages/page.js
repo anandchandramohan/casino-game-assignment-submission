@@ -104,7 +104,7 @@ function Page(props) {
             if(isEmpty(uuid)){
                 if(loaded){
                     return (
-                    <WalletGate>
+                    <WalletGate lang={settings.lang}>
                         <Sign {...props} lang={settings.lang} date={settings.date}/>
                     </WalletGate>
                     )

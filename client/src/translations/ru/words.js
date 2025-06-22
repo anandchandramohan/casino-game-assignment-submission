@@ -39,6 +39,10 @@ var word_bank = {
 
     sign_in: "Войти",
     sign_up: "Зарегистрироваться",
+    connect_wallet: "Подключить кошелек",
+    metamask_not_installed: "MetaMask не установлен.",
+    wallet_connection_rejected: "Пользователь отклонил подключение кошелька.",
+    install_metamask: "Установить MetaMask",
     signin_error: "Пользователь не существует",
     signup_error: "Произошла ошибка при регистрации. Пожалуйста, отправьте эту ошибку на " + admin_email + " или попробуйте снова позже.",
     email_yes_user_no_error: "Этот адрес электронной почты уже был использован",

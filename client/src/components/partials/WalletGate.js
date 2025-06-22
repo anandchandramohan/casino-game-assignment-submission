@@ -1,15 +1,20 @@
-// WalletGate.jsx
 import React, { useEffect, useState } from 'react';
+import { translate } from '../../translations/translate';
+import Header from './header';
+import Language from '../settings/language';
 
-export default function WalletGate({ children }) {
+export default function WalletGate({ children, lang }) {
   const [walletAddress, setWalletAddress] = useState(null);
   const [error, setError] = useState(null);
+  const [hasMetaMask, setHasMetaMask] = useState(false);
 
   useEffect(() => {
     if (!window.ethereum) {
-      setError("MetaMask not installed.");
+      setError('metamask_not_installed');
+      setHasMetaMask(false);
       return;
     }
+    setHasMetaMask(true);
     window.ethereum.request({ method: 'eth_accounts' })
       .then(accounts => {
         if (accounts.length > 0) {
@@ -23,24 +28,38 @@ export default function WalletGate({ children }) {
       const [account] = await window.ethereum.request({ method: 'eth_requestAccounts' });
       setWalletAddress(account);
     } catch (err) {
-      setError("User rejected wallet connection.");
+      setError('wallet_connection_rejected');
     }
   };
 
-  if (error && !walletAddress) {
+  if (!walletAddress) {
     return (
-      <div>
-        <p>{error}</p>
-        {error.includes("MetaMask") && (
-          <a href="https://metamask.io/download.html" target="_blank" rel="noreferrer">Install MetaMask</a>
-        )}
+      <div style={{ position: 'relative', minHeight: '100vh' }}>
+        <Language title={lang} />
+        <div className="sign_container">
+          <div className="sign_container_box">
+            <div className="deco">
+              <Header template="sign" lang={lang} />
+              <div className="sign_box">
+                {error ? <p className="text_red">{translate({ lang, info: error })}</p> : null}
+                <button 
+                  className="mybutton button_fullcolor" 
+                  onClick={connectWallet}
+                  disabled={!hasMetaMask}
+                  style={!hasMetaMask ? { background: '#ccc', color: '#888', border: '1px solid #ccc', cursor: 'not-allowed' } : {}}>
+                  {translate({ lang, info: 'connect_wallet' })}   
+                </button>
+                {error === 'metamask_not_installed' && (
+                  <div className="sign_extra_info">
+                    <a href="https://metamask.io/download.html" target="_blank" rel="noreferrer">{translate({ lang, info: 'install_metamask' })}</a>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
-
-  if (!walletAddress) {
-    return <button onClick={connectWallet}>Connect Wallet</button>;
-  }
-
   return <>{children}</>;
 }

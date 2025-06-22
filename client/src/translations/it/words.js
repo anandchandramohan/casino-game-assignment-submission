@@ -39,6 +39,7 @@ var word_bank = {
 
     sign_in: "Accedi",
     sign_up: "Registrati",
+    connect_wallet: "Collega portafoglio",
     signin_error: "L'utente non esiste",
     signup_error: "C'è stato un errore durante la registrazione. Si prega di inviare questo errore a " + admin_email + " o riprovare più tardi.",
     email_yes_user_no_error: "Questa email è già stata utilizzata",

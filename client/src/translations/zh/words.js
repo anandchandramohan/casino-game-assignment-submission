@@ -39,6 +39,10 @@ var word_bank = {
 
     sign_in: "登录",
     sign_up: "注册",
+    connect_wallet: "连接钱包",
+    metamask_not_installed: "未安装MetaMask。",
+    wallet_connection_rejected: "用户拒绝了钱包连接。",
+    install_metamask: "安装MetaMask",
     signin_error: "用户不存在",
     signup_error: "注册时出现错误。请将此错误发送至 " + admin_email + " 或稍后再试。",
     email_yes_user_no_error: "该电子邮件已被使用",

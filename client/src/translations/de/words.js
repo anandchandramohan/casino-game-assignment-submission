@@ -39,6 +39,10 @@ var word_bank = {
     
     sign_in: "Anmelden",
     sign_up: "Registrieren",
+    connect_wallet: "Wallet verbinden",
+    metamask_not_installed: "MetaMask nicht installiert.",
+    wallet_connection_rejected: "Benutzer hat die Wallet-Verbindung abgelehnt.",
+    install_metamask: "MetaMask installieren",
     signin_error: "Der Benutzer existiert nicht",
     signup_error: "Es gab einen Fehler bei der Anmeldung. Bitte senden Sie diese Fehlermeldung an " + admin_email + " oder versuchen Sie es später erneut.",
     email_yes_user_no_error: "Diese E-Mail-Adresse wurde bereits verwendet",

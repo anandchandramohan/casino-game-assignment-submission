@@ -12,7 +12,7 @@ var word_bank = {
     bet_type: "Tip de pariu",
     and: "și",
     or: "sau",
-    i_agree_to: "Sunt de acord cu",
+    i_agree_to: "Sunt de acord cu", 
 
     // games
     games: "Jocuri",
@@ -39,6 +39,10 @@ var word_bank = {
 
     sign_in: "Logare",
     sign_up: "Înregistrare",
+    connect_wallet: "Conectează portofelul",
+    metamask_not_installed: "MetaMask nu este instalat.",
+    wallet_connection_rejected: "Utilizatorul a respins conectarea portofelului.",
+    install_metamask: "Instalează MetaMask",
     signin_error: "User-ul nu există",
     signup_error: "A apărut o eroare la înregistrare. Vă rugăm să trimiteți această eroare la " + admin_email + " sau încercați din nou mai târziu.",
     email_yes_user_no_error: "Acest email a fost deja folosit",
