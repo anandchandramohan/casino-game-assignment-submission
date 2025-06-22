@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { useSelector,useDispatch } from 'react-redux'
 import { getCookie, isEmpty, postData, setCookie } from '../../utils/utils'
+import WalletGate from '../partials/WalletGate';
 import Popup from '../popup/popup'
 import Sign from '../sign/sign'
 import { bringPayload } from '../../reducers/home'
@@ -102,7 +103,11 @@ function Page(props) {
         {(() => {
             if(isEmpty(uuid)){
                 if(loaded){
-                    return <Sign {...props} lang={settings.lang} date={settings.date}/>
+                    return (
+                    <WalletGate>
+                        <Sign {...props} lang={settings.lang} date={settings.date}/>
+                    </WalletGate>
+                    )
                 } else {
                     return <Splash {...props} lang={settings.lang} progressNumber={progressNumber} />
                 }
