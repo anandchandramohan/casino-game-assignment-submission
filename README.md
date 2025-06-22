@@ -53,6 +53,6 @@ A full-featured casino gaming application built using **Node.js/Express** for th
 - Integrate wallet connection as a **precondition** for sign-in.
 - Maintain the existing sign-in flow, but ensure users can only authenticate **after a successful wallet connection**
 
-Refer the details in the document - Wallet Connect Flow Explanation.pdf
+Refer the details in the document - Wallet_Connect_Flow_Explanation.pdf (https://github.com/anandchandramohan/casino-game-assignment-submission/blob/master/Wallet_Connect_Flow_Explanation.pdf)
 
 
